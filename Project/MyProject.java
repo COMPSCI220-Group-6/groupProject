@@ -1,12 +1,17 @@
 package Project;
 // David was here
-import javax.swing.JOptionPane;
 
-public class MyProject {
+import java.io.IOException;
+
+
+public class MyProject{
     
-    public static void main(String[] args){
-        
-        UserAuthentication.login();    
+    public static void main(String[] args) throws IOException{
+        UserAuthentication obj = new UserAuthentication();
+        obj.login();  
+        if (obj.login)
+            System.out.println("European union");  
+
     
     }
     
