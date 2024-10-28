@@ -1,15 +1,12 @@
 package Project;
 
-import javax.swing.JOptionPane;
 
 public class MyProject {
     
     public static void main(String[] args){
-        login();    
+        
+        UserAuthentication.login();    
     
     }
     
-    public static void login(){
-        JOptionPane.showInputDialog("yes");
-    }
 }
