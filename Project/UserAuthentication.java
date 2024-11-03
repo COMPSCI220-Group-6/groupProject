@@ -29,6 +29,14 @@ public class UserAuthentication{
                     if (usernameInput.equalsIgnoreCase(username) && passwordInput.equals(password)){
                         login = true;
                         break;
+                    } else{
+                        login = false;
+                    }
+
+                    if(!login){
+                        usernameInput = JOptionPane.showInputDialog("Retry user login: ");
+                        passwordInput = JOptionPane.showInputDialog("Retry user password: ");
+                        continue;
                     }
                 
                 }
