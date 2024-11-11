@@ -21,6 +21,7 @@ public class MyProject{
             System.out.println("European union");
             //Start System here
             obj2.Transact(); // call transact class
+            System.out.println(obj2.getTotal());
         }
 
 
