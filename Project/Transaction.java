@@ -1,16 +1,21 @@
 package Project;
 
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
-public class Transaction extends MyProject{
+public class Transaction {
 
-    private double amount;
+    public ArrayList<Double> transact;
 
-    public Transaction(double amount){
-        ArrayList<Integer> transact = new ArrayList<>();
-        amount = Double.parseDouble(JOptionPane.showInputDialog("Subtract desired amount (in dollars)"));
-
+    public void Transact(){
+        transact = new ArrayList<Double>();
+        double amount = Double.parseDouble(JOptionPane.showInputDialog("Subtract desired amount to transact(in dollars)"));
+        while(amount < 0.0) {
+            transact.add(amount);
+            amount = Double.parseDouble(JOptionPane.showInputDialog("Subtract desired amount to transact(in dollars)"));
+        }
     }
+
+
+
 }

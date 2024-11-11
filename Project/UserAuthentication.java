@@ -3,7 +3,6 @@ package Project;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
 import javax.swing.JOptionPane;
 
 public class UserAuthentication{
@@ -11,9 +10,7 @@ public class UserAuthentication{
     public boolean login = false;
     // file used here
     public void login() throws IOException{
-
         String filePath = "Project/UserFile.csv";
-        
 
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String Line;
@@ -38,20 +35,11 @@ public class UserAuthentication{
                         passwordInput = JOptionPane.showInputDialog("Retry user password: ");
                         continue;
                     }
-                
                 }
-                
-                
-
             }
         } catch(IOException e){
             System.out.println("No work. UH OH");
             e.printStackTrace();
         }
-        
-                
-        
-
-
     }
 }
