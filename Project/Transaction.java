@@ -19,7 +19,7 @@ public class Transaction {
                 input = (JOptionPane.showInputDialog("Subtract desired amount to transact(in dollars)\nTo exit/continue leave blank"));
             }
         }
-        catch (NumberFormatException e){
+        catch (NumberFormatException e ){
             System.out.println("exit Transaction class");
         }
     }
