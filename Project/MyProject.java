@@ -5,6 +5,7 @@ package Project;
 //Joshua was here
 
 
+import javax.swing.*;
 import java.io.IOException;
 
 
@@ -20,8 +21,12 @@ public class MyProject{
         if (obj1.login) {
             System.out.println("European union");
             //Start System here
+            JOptionPane.showMessageDialog(null, "Transact class is to calculate total expenses.\nUser can input each expense separately or all at once.");
             obj2.Transact(); // call transact class
             System.out.println(obj2.getTotal());
+        }
+        if (obj2.Transaction){
+            System.out.println("Masterbuilding");
         }
 
 
