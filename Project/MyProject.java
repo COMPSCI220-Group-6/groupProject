@@ -1,9 +1,6 @@
 package Project;
-// David was here
 
-
-//Joshua was here
-
+// Written by Jacob Toepfer, Joshua Young, David Pellas, John Torres
 
 import javax.swing.*;
 import java.io.IOException;
@@ -17,7 +14,7 @@ public class MyProject{
         //IncomeTracking obj3 = new IncomeTracking();
         //SavingsGoal obj4 = new SavingsGoal();
 
-        obj1.login(); // call login for user (bread, bread)
+        obj1.login(); // call login for user (br, br)
         if (obj1.login) {
             System.out.println("European union");
             //Start System here
