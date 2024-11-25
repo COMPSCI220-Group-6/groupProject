@@ -11,7 +11,7 @@ public class MyProject{
     public static void main(String[] args) throws IOException{
         UserAuthentication obj1 = new UserAuthentication();
         Transaction obj2 = new Transaction();
-        //IncomeTracking obj3 = new IncomeTracking();
+        IncomeTracking obj3 = new IncomeTracking();
         //SavingsGoal obj4 = new SavingsGoal();
 
         obj1.login(); // call login for user (br, br)
@@ -24,6 +24,9 @@ public class MyProject{
         }
         if (obj2.Transaction){
             System.out.println("Masterbuilding");
+        }
+        if (obj3.Income){
+            System.out.println("Ducks and 3");
         }
 
 

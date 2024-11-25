@@ -1,4 +1,5 @@
 package Project;
+import javax.swing.*;
 import java.util.Scanner;
 
 public class IncomeTracking {
@@ -6,12 +7,12 @@ public class IncomeTracking {
 
     public static void Income() {
 
-
-    Scanner user = new Scanner(System.in);
+        Scanner user = new Scanner(System.in);
 
 
 
     //ask the user if they want to do the income.
+        //  --->    JOptionPane.showMessageDialog(null, "Message");
     System.out.println("Would you like to do the income? (Enter y for yes, and n for no):");
 
 
