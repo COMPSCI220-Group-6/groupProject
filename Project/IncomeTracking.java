@@ -30,10 +30,8 @@ public class IncomeTracking {
 
     // Method to calculate taxes (this is just a placeholder example)
     private static double calculateTaxes(double salary) {
-        return salary * 0.2; // Example: 20% tax rate
+        return salary * 0.29; // Example: 20% tax rate
     }
 
-    public static void main(String[] args) {
-        Income(); // Call the Income method
-    }
+    //public static void main(String[] args) {Income(); // Call the Income method}
 }
