@@ -37,12 +37,12 @@ public class MyProject{
                         loop = true;
                     case 1:
                         // Generate Monthly Report
-                        if(hasExpenses && hasIncome && hasSavingsGoal) {
+                        //if(hasExpenses && hasIncome && hasSavingsGoal) {
                             obj4.showExpenses();
-                        }
-                        else {
-                            JOptionPane.showMessageDialog(null, "You must track your income, expenses, and set a savings goal before generating the report.", "Incomplete Tasks", JOptionPane.WARNING_MESSAGE);
-                        }
+                        //}
+                        //else {
+                        //    JOptionPane.showMessageDialog(null, "You must track your income, expenses, and set a savings goal before generating the report.", "Incomplete Tasks", JOptionPane.WARNING_MESSAGE);
+                        //}
                         break;
                     case 2:
                         // Savings Goal
