@@ -5,44 +5,52 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-public class UserAuthentication{
+public class UserAuthentication {
 
     public boolean login = false;
+
     // file used here
-    public void login() throws IOException{
+    public void login() throws IOException {
         String filePath = "Project/UserFile.csv";
+        String usernameInput;
+        String passwordInput;
 
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
-            String Line;
-            String usernameInput = JOptionPane.showInputDialog(null,"Username:", "User Login", JOptionPane.PLAIN_MESSAGE);
-            String passwordInput = JOptionPane.showInputDialog(null,"Password:", "User Login", JOptionPane.PLAIN_MESSAGE);
+        while (!login) {
+            usernameInput = JOptionPane.showInputDialog(null, "Username:", "User Login", JOptionPane.PLAIN_MESSAGE);
+            if (usernameInput == null) {
+                return;
+            }
+            passwordInput = JOptionPane.showInputDialog(null, "Password:", "User Login", JOptionPane.PLAIN_MESSAGE);
+            if (passwordInput == null) {
+                return;
+            }
 
-            while ((Line = br.readLine()) != null) {
+            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+                String line;
+                boolean userFound = false;
 
-                //get user info stored
-                String[] file = Line.split(",");
-                String username = file[0].trim();
-                String password = file[1].trim();
+                while ((line = br.readLine()) != null) {
+                    String[] fileData = line.split(",");
+                    String username = fileData[0].trim();
+                    String password = fileData[1].trim();
 
-                //check against input
-                while (file.length >= 2 && !login){
-                    if(!usernameInput.equalsIgnoreCase(username)) {
-                        usernameInput = JOptionPane.showInputDialog(null,"Retry user login: ", "User Login", JOptionPane.PLAIN_MESSAGE);
-                        passwordInput = JOptionPane.showInputDialog(null,"Retry user password: ", "User Login", JOptionPane.PLAIN_MESSAGE);
-                    } else if (!passwordInput.equals(password)) {
-                        passwordInput = JOptionPane.showInputDialog(null,"Retry user password: ", "User Login", JOptionPane.PLAIN_MESSAGE);
-                    } else if (usernameInput.equalsIgnoreCase(username) && passwordInput.equals(password)){
+                    // Check credentials
+                    if (usernameInput.equalsIgnoreCase(username) && passwordInput.equals(password)) {
                         login = true;
-                        break;
-                    } else{
-                        login = false;
+                        userFound = true;
+                        //JOptionPane.showMessageDialog(null, "Login successful!", "User Login", JOptionPane.INFORMATION_MESSAGE);
+                        break; // Exit
                     }
                 }
+
+                if (!userFound) {
+                    JOptionPane.showMessageDialog(null, "Invalid username or password. Please try again.", "User Login", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (IOException e) {
+                System.out.println("Error reading file. UH OH");
+                e.printStackTrace();
             }
-        }
-        catch(IOException e){
-            System.out.println("No work. UH OH");
-            e.printStackTrace();
         }
     }
 }
