@@ -7,7 +7,7 @@ public class MonthlyReport {
 
     // Write total expenses to CSV
     public void writeTotalExpenses(double totalExpenses) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("/groupProject/Project/MonthlyReport.csv"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Project/MonthlyReport.csv"))) {
             writer.newLine();
             writer.write("Total Calculated Expenses: $" + totalExpenses);
         } catch (IOException e) {
@@ -19,7 +19,7 @@ public class MonthlyReport {
     public double calculateTotalExpenses() {
         double totalExpenses = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("/groupProject/Project/MonthlyReport.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Project/MonthlyReport.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("Total Transactions: $")) {
@@ -39,8 +39,9 @@ public class MonthlyReport {
         StringBuilder fileContent = new StringBuilder();
         double totalExpenses = calculateTotalExpenses();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("/groupProject/Project/MonthlyReport.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Project/MonthlyReport.csv"))) {
             String line;
+            System.out.println("works");
             while ((line = reader.readLine()) != null) {
                 fileContent.append(line).append("\n");
             }
