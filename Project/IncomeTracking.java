@@ -32,6 +32,5 @@ public class IncomeTracking {
     private static double calculateTaxes(double salary) {
         return salary * 0.29; // Example: 20% tax rate
     }
-
     //public static void main(String[] args) {Income(); // Call the Income method}
 }

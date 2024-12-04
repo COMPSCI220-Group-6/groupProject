@@ -42,7 +42,6 @@ public class UserAuthentication {
                         break; // Exit
                     }
                 }
-
                 if (!userFound) {
                     JOptionPane.showMessageDialog(null, "Invalid username or password. Please try again.", "User Login", JOptionPane.ERROR_MESSAGE);
                 }

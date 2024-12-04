@@ -65,7 +65,6 @@ public class MyProject{
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Invalid option selected.");
-
                 }
             }
         }
