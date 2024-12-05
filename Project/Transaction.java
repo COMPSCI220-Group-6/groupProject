@@ -31,6 +31,9 @@ public class Transaction {
                         int option = JOptionPane.showOptionDialog(null, "Do you want to continue the transaction?", "Transaction Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Continue", "Exit"}, "Continue");
                         if (option == 1) {
                             showTransactionHistory();
+                            return;
+                        } else{
+                            input = (JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, leave blank or select 'Exit'."));
                         }
                     }
                 }

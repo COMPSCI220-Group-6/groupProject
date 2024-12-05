@@ -1,11 +1,14 @@
 package Project;
 import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
 
 public class IncomeTracking {
 
     public static void Income() {
         // Ask the user if they want to do the income.
         String response = JOptionPane.showInputDialog("Would you like to do the income? (Enter y for yes, and n for no):");
+
+        DecimalFormat dfmt = new DecimalFormat("#,###,###,000.00");
 
         if (response != null && !response.isEmpty()) {
             if (response.equalsIgnoreCase("y")) {
@@ -14,7 +17,7 @@ public class IncomeTracking {
                     double salary = Double.parseDouble(JOptionPane.showInputDialog("Please enter your salary."));
                     // Calculate and display the taxes
                     double taxes = calculateTaxes(salary);
-                    JOptionPane.showMessageDialog(null, "Your taxes are: $" + taxes);
+                    JOptionPane.showMessageDialog(null, "Your taxes are: $" + dfmt.format(taxes));
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for salary.");
                 }
