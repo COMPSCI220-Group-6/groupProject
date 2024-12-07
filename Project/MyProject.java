@@ -14,11 +14,9 @@ public class MyProject{
         SavingsGoal obj3 = new SavingsGoal();
         MonthlyReport obj4 = new MonthlyReport();
 
-//        boolean hasIncome = false,
-//                hasExpenses = false,
-//                hasSavingsGoal = false;
+        boolean hasExpenses = false;
 
-        obj1.login(); // call login for user (br, br)
+        obj1.login(); // call login for user
         if (obj1.login) { //Start System here
 
             JOptionPane.showMessageDialog(null, "Please complete in order according to list. Thanks!");
@@ -37,14 +35,13 @@ public class MyProject{
                         loop = true;
                     case 1:
                         // Generate Monthly Report
-                        //if(hasExpenses && hasIncome && hasSavingsGoal) {
-                        JOptionPane.showMessageDialog(null, "You must track your income, expenses, and set a savings goal before generating the report.", "Incomplete Tasks", JOptionPane.WARNING_MESSAGE);
-                        obj4.showExpenses();
-
-                        //}
-//                        else {
-//                            JOptionPane.showMessageDialog(null, "You must track your income, expenses, and set a savings goal before generating the report.", "Incomplete Tasks", JOptionPane.WARNING_MESSAGE);
-//                        }
+                        if(hasExpenses) {
+                            JOptionPane.showMessageDialog(null, "You must track your income, expenses, and set a savings goal before generating the report.", "Incomplete Tasks", JOptionPane.WARNING_MESSAGE);
+                            obj4.showExpenses();
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "You must track your expenses before generating the report.", "Incomplete Tasks", JOptionPane.WARNING_MESSAGE);
+                        }
                         break;
                     case 2:
                         // Savings Goal
@@ -57,9 +54,9 @@ public class MyProject{
                         // Transactions
                         JOptionPane.showMessageDialog(null, "Transact class is to calculate total expenses.\nUser can input each expense separately or all at once.");
                         boolean transactionCompleted = obj2.Transact(); // Call Transact and check if exit was selected
-//                        if (transactionCompleted) {
-//                            hasExpenses = true;
-//                        }
+                        if (transactionCompleted) {
+                            hasExpenses = true;
+                        }
                         break;
                     case 4:
                         // Income

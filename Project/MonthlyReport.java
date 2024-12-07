@@ -3,12 +3,12 @@ package Project;
 import java.io.*;
 import javax.swing.JOptionPane;
 
-public class MonthlyReport {
+public class MonthlyReport extends Transaction{
 
     private double salary;
     private double taxes;
     private double savingsGoal;
-    private double totalExpenses;
+    public double totalExpenses = getTotal();
 
     // Write total expenses to CSV
     public void writeTotalExpenses(double totalExpenses) {
