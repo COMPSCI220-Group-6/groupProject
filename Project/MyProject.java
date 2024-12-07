@@ -54,8 +54,10 @@ public class MyProject{
                     case 3:
                         // Transactions
                         JOptionPane.showMessageDialog(null, "Transact class is to calculate total expenses.\nUser can input each expense separately or all at once.");
-                        obj2.Transact();
-                        hasExpenses = true;
+                        boolean transactionCompleted = obj2.Transact(); // Call Transact and check if exit was selected
+                        if (transactionCompleted) {
+                            hasExpenses = true;
+                        }
                         break;
                     case 4:
                         // Income

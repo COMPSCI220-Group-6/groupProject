@@ -12,29 +12,33 @@ public class Transaction {
     public ArrayList<Double> transact;
     public boolean Transaction;
 
-    public void Transact(){
+    public boolean Transact(){
         transact = new ArrayList<Double>();
         Transaction = false;
-        String input = JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, leave blank or select 'Exit'.");
+        String input = JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, select 'Exit'.");
         while (true){
             try {
 
                 while (!input.isEmpty()) {
-                    double amount = Double.parseDouble(input);  // Parse the amount
-                    transact.add(amount);  // Add to the transaction list
 
                     // Ask for next transaction amount or exit option
-                    input = (JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, leave blank or select 'Exit'."));
+                    input = (JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, select 'Exit'."));
 
-                    // If input is empty (i.e., user wants to exit), break out of the loop
                     if (input == null || input.isEmpty()) {
                         int option = JOptionPane.showOptionDialog(null, "Do you want to continue the transaction?", "Transaction Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Continue", "Exit"}, "Continue");
                         if (option == 1) {
                             showTransactionHistory();
-                            return;
-                        } else{
-                            input = (JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, leave blank or select 'Exit'."));
+                            return false;
+                        } else {
+                            input = (JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, or select 'Exit'."));
+                            if (input == null || input.isEmpty()) {
+                                break;
+                            }
                         }
+                    }else {
+                        double amount = Double.parseDouble(input);
+                        transact.add(amount);
+                        input = JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, or select 'Exit'.");
                     }
                 }
             }
