@@ -13,11 +13,6 @@ public class MyProject{
         Transaction obj2 = new Transaction();
         SavingsGoal obj3 = new SavingsGoal();
         MonthlyReport obj4 = new MonthlyReport();
-
-        boolean hasIncome = false,
-                hasExpenses = false,
-                hasSavingsGoal = false;
-
         obj1.login(); // call login for user (br, br)
         if (obj1.login) { //Start System here
 
@@ -36,32 +31,24 @@ public class MyProject{
                         System.exit(0);
                         loop = true;
                     case 1:
-                        // Generate Monthly Report
-                        if(hasExpenses && hasIncome && hasSavingsGoal) {
-                            obj4.showExpenses();
-                        }
-                        else {
-                            JOptionPane.showMessageDialog(null, "You must track your income, expenses, and set a savings goal before generating the report.", "Incomplete Tasks", JOptionPane.WARNING_MESSAGE);
-                        }
+                    	obj4.showExpenses();
+
                         break;
                     case 2:
                         // Savings Goal
                         JOptionPane.showMessageDialog(null, "Savings class is to gain information about saving goals.\nUser can input their goal to be used later.");
                         int savingsGoalAmount = obj3.savingsGoal();
                         JOptionPane.showMessageDialog(null, "Your savings goal is: $" + savingsGoalAmount);
-                        hasSavingsGoal = true;
                         break;
                     case 3:
                         // Transactions
                         JOptionPane.showMessageDialog(null, "Transact class is to calculate total expenses.\nUser can input each expense separately or all at once.");
                         obj2.Transact();
-                        hasExpenses = true;
                         break;
                     case 4:
                         // Income
                         JOptionPane.showMessageDialog(null, "Income class is to calculate total money earned.\nUser can input their salary to the planner and calculate tax.");
                         IncomeTracking.Income();
-                        hasIncome = true;
                         break;
                     default:
                         JOptionPane.showMessageDialog(null, "Invalid option selected.");
