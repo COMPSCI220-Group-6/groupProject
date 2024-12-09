@@ -4,7 +4,6 @@ package Project;
 
 import java.io.IOException;
 import java.util.ArrayList;
-//import java.io.IOException;
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
@@ -58,7 +57,7 @@ public class Transaction {
             JOptionPane.showMessageDialog(null, "No transactions made.");
         }
     }
-    public double getTotal() throws IOException {
+    public double getTotal() {
         String filePath = "Project/MonthlyReport.csv";
         for(double total : transact) {
             sum += total;
