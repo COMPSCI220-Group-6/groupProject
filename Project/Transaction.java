@@ -2,8 +2,10 @@ package Project;
 
 //Jacob
 
+import java.io.IOException;
 import java.util.ArrayList;
 //import java.io.IOException;
+import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
 public class Transaction {
@@ -56,9 +58,15 @@ public class Transaction {
             JOptionPane.showMessageDialog(null, "No transactions made.");
         }
     }
-    public double getTotal(){
+    public double getTotal() throws IOException {
+        String filePath = "Project/MonthlyReport.csv";
         for(double total : transact) {
             sum += total;
+        }
+        try (FileWriter writer = new FileWriter(filePath, true)) {
+            writer.write(String.valueOf(sum));
+        } catch (IOException e) {
+            System.err.println("An error occurred: " + e.getMessage());
         }
         return sum;
     }

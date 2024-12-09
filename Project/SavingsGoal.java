@@ -1,13 +1,14 @@
 package Project;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class SavingsGoal extends Transaction{
     public int savingsGoal(){
         String message = JOptionPane.showInputDialog(null, "Input Total savings goal", "Savings Goal", JOptionPane.PLAIN_MESSAGE);
         return Integer.parseInt(message);
     }
-    public double actualTotal(){
+    public double actualTotal() throws IOException {
         return getTotal() + savingsGoal();
     }
 }
