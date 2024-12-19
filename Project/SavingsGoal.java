@@ -4,11 +4,18 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class SavingsGoal extends Transaction{
-    public int savingsGoal(){
+
+    public static int usrSavings;
+
+    public static int savingsGoal(){
         String message = JOptionPane.showInputDialog(null, "Input Total savings goal", "Savings Goal", JOptionPane.PLAIN_MESSAGE);
-        return Integer.parseInt(message);
+        usrSavings = Integer.parseInt(message);
+        return usrSavings;
     }
-    public double actualTotal() throws IOException {
-        return getTotal() + savingsGoal();
+    public static int amtGoal(){
+        return usrSavings;
+    }
+    public static double actualTotal() throws IOException {
+        return getTotal() + amtGoal();
     }
 }

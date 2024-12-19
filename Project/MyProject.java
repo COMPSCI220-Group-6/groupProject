@@ -18,7 +18,7 @@ public class MyProject{
                 hasExpenses = false,
                 hasSavingsGoal = false;
 
-        obj1.login(); // call login for user (br, br)
+        obj1.login(); // call login for user
         if (obj1.login) { //Start System here
 
             JOptionPane.showMessageDialog(null, "Please complete in order according to list. Thanks!");
@@ -67,8 +67,7 @@ public class MyProject{
                         JOptionPane.showMessageDialog(null, "Invalid option selected.");
                 }
             }
-        }
-        else {
+        }else {
             JOptionPane.showMessageDialog(null, "Login failed. Please try again.");
         }
     }
