@@ -6,68 +6,81 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
+import java.util.List;
 
 public class Transaction {
 
     public static double sum;
     public static ArrayList<Double> transact;
-    public boolean Transaction;
+    //public boolean Transaction = false;
 
     public void Transact(){
-        transact = new ArrayList<Double>();
-        Transaction = false;
-        String input = JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, leave blank or select 'Exit'.");
-        while (true){
+        List<Double> transact = new ArrayList<>();
+
+        // List of categories
+        List<String> expenseCategories = List.of("rent (monthly)", "insurance (monthly)", "utilities (monthly)", "groceries (monthly)");
+
+        int categoryIndex = 0;
+        String input = JOptionPane.showInputDialog("Enter the cost of " + expenseCategories.get(categoryIndex) + ".\nTo exit, leave blank or select 'Cancel'.");
+
+        while (true) {
             try {
+                while (input != null && !input.isEmpty()) {
+                    double amount = Double.parseDouble(input);
+                    transact.add(amount);
 
-                while (!input.isEmpty()) {
-                    double amount = Double.parseDouble(input);  // Parse the amount
-                    transact.add(amount);  // Add to the transaction list
+                    categoryIndex++;
+                    if (categoryIndex < expenseCategories.size()) {
+                        input = JOptionPane.showInputDialog("Enter the cost of " + expenseCategories.get(categoryIndex) + ".\nTo exit, leave blank or select 'Cancel'.");
+                    } else {
+                        int option = JOptionPane.showOptionDialog(null, "Do you want to add more expenses? To return to the menu, select 'Exit'.", "Transaction Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Continue", "Exit"}, "Continue");
 
-                    // Ask for next transaction amount or exit option
-                    input = (JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, leave blank or select 'Cancel'."));
-
-                    // If input is empty (i.e., user wants to exit), break out of the loop
-                    if (input == null || input.isEmpty()) {
-                        int option = JOptionPane.showOptionDialog(null, "Do you want to continue the transaction? To return to menu select 'Exit'.", "Transaction Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Continue", "Exit"}, "Continue");
                         if (option == 1) {
-                            showTransactionHistory();
+                            showTransactionHistory(transact);
                             return;
-                        } else{
-                            input = (JOptionPane.showInputDialog("Enter desired amount to subtract (in dollars).\nTo exit, leave blank or select 'Exit'."));
+                        } else {
+                            categoryIndex = 0;
+                            input = JOptionPane.showInputDialog("Enter the cost of " + expenseCategories.get(categoryIndex) + ".\nTo exit, leave blank or select 'Cancel'.");
                         }
                     }
                 }
+            } catch (NumberFormatException e) {
+                input = JOptionPane.showInputDialog("Invalid input. Please enter a number.\nEnter the cost of " + expenseCategories.get(categoryIndex) + ".\nTo exit, leave blank or select 'Cancel'.");
             }
-            catch (NumberFormatException e ){
-                System.out.println("exit Transaction class");
-                input = (JOptionPane.showInputDialog("Not desired input please put in number.\nPlease try again."));
-            }
-        }
+            if (input == null || input.isEmpty()) {
+                int option = JOptionPane.showOptionDialog(null, "Do you want to continue or exit to the menu?", "Transaction Options", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new String[]{"Continue", "Exit"}, "Continue");
 
-    }
-    public void showTransactionHistory() {
-        if (!transact.isEmpty()) {
-            StringBuilder history = new StringBuilder("Transaction History:\n");
-            for (Double amount : transact) {
-                history.append("$").append(amount).append("\n");
+                if (option == 1) {
+                    showTransactionHistory(transact);
+                    categoryIndex = 0;
+                    return;
+                } else {
+                    categoryIndex = 0;
+                    input = JOptionPane.showInputDialog("Enter the cost of " + expenseCategories.get(categoryIndex) + ".\nTo exit, leave blank or select 'Cancel'.");
+                }
             }
-            JOptionPane.showMessageDialog(null, history.toString());
-        } else {
-            JOptionPane.showMessageDialog(null, "No transactions made.");
         }
     }
+
+    public void showTransactionHistory(List<Double> transact) {
+        StringBuilder history = new StringBuilder("Transaction History:\n");
+        for (int i = 0; i < transact.size(); i++) {
+            history.append("Expense ").append(i + 1).append(": $").append(transact.get(i)).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, history.toString(), "Transaction History", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public static double getTotal() {
-        String filePath = "Project/MonthlyReport.csv";
-        for(double total : transact) {
-            sum += total;
-        }
-        try (FileWriter writer = new FileWriter(filePath, true)) {
-            writer.write(String.valueOf(sum));
-        } catch (IOException e) {
-            System.err.println("An error occurred: " + e.getMessage());
-        }
-        return Math.ceil(sum * 100) / 100;
+    String filePath = "Project/MonthlyReport.csv";
+    for(double total : transact) {
+        sum += total;
+    }
+    try (FileWriter writer = new FileWriter(filePath, true)) {
+        writer.write(String.valueOf(sum));
+    } catch (IOException e) {
+        System.err.println("An error occurred: " + e.getMessage());
+    }
+    return Math.ceil(sum * 100) / 100;
     }
 }
 

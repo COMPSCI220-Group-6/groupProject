@@ -3,6 +3,7 @@ package Project;
 // Written by Jacob Toepfer, Joshua Young, David Pellas, John Torres
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 
@@ -17,6 +18,20 @@ public class MyProject{
         boolean hasIncome = false,
                 hasExpenses = false,
                 hasSavingsGoal = false;
+
+//        JFrame frame = new JFrame("financeial Planner");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setSize(600, 600);
+//
+//        JPanel panel = new JPanel(new BorderLayout(10, 10));
+//
+//        JLabel label = new JLabel("Please complete in order according to list. Thanks!");
+//
+//        panel.add(label, BorderLayout.NORTH);
+//        frame.add(panel);
+//
+//        frame.setVisible(true);
+        ///make all the boxes use this somehow
 
         obj1.login(); // call login for user
         if (obj1.login) { //Start System here
@@ -53,7 +68,7 @@ public class MyProject{
                         break;
                     case 3:
                         // Transactions
-                        JOptionPane.showMessageDialog(null, "Transact class is to calculate total expenses.\nUser can input each expense separately or all at once.");
+                        JOptionPane.showMessageDialog(null, "Transact class is to calculate total expenses if doesn't apply put zero.\nUser can input each expense separately or all at once.");
                         obj2.Transact();
                         hasExpenses = true;
                         break;
